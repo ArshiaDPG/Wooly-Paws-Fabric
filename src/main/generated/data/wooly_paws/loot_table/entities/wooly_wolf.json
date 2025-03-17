@@ -1,0 +1,330 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "minecraft:entities/wolf"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "white"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/white"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "orange"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/orange"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "magenta"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/magenta"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "light_blue"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/light_blue"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "yellow"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/yellow"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "lime"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/lime"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "pink"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/pink"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "gray"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/gray"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "light_gray"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/light_gray"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "cyan"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/cyan"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "purple"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/purple"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "blue"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/blue"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "brown"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/brown"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "green"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/green"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "red"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/red"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "components": {
+                      "minecraft:sheep/color": "black"
+                    },
+                    "type_specific": {
+                      "type": "wooly_paws:wooly_wolf",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "wooly_paws:entities/wooly_wolf/black"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

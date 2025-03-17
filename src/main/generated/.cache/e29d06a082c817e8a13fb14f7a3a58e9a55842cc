@@ -1,0 +1,18 @@
+// 1.21.5 Pre-release 2	-999999999-01-01T00:00:00	Wooly Paws/minecraft:shearing Loot Table
+21f0851423bc77e1fc4892f3a741ca9a3de749cf data/wooly_paws/loot_table/shearing/wooly_wolf.json
+58adea80ff841d6201e250eeedfe6a14c65e2ad2 data/wooly_paws/loot_table/shearing/wooly_wolf/black.json
+f44ac66fb65bb938111d31e7e3e8377517c79f52 data/wooly_paws/loot_table/shearing/wooly_wolf/blue.json
+62949545ce9a6c28bc796884a9ae6b4adb79005a data/wooly_paws/loot_table/shearing/wooly_wolf/brown.json
+6aae0698919bcfbf7a781780d49fa31a5dd3f24c data/wooly_paws/loot_table/shearing/wooly_wolf/cyan.json
+4384bda135282a535ca4993320fdc06466562ab6 data/wooly_paws/loot_table/shearing/wooly_wolf/gray.json
+eb86a4fcfbc16c2272fcd70b3d9f4c3a3e64848d data/wooly_paws/loot_table/shearing/wooly_wolf/green.json
+caa6dad2453c7e6d6605f40706c76c61defe3d37 data/wooly_paws/loot_table/shearing/wooly_wolf/light_blue.json
+d80a2d059712203b8c2b05adf55c9c0d5a2d38f3 data/wooly_paws/loot_table/shearing/wooly_wolf/light_gray.json
+dcedca4a32e9f5fcfebd6c5b9f3217e365c0a52f data/wooly_paws/loot_table/shearing/wooly_wolf/lime.json
+cd121bb451dfe8e430d80675fb4c0824a036b02e data/wooly_paws/loot_table/shearing/wooly_wolf/magenta.json
+17835ac47417bfd1be5867a039bac55f5483e4f9 data/wooly_paws/loot_table/shearing/wooly_wolf/orange.json
+ff6b784096cf2b9e42bd656838863c461c43250b data/wooly_paws/loot_table/shearing/wooly_wolf/pink.json
+3ad44520ee2187665b432ab6a2d0e19b48495840 data/wooly_paws/loot_table/shearing/wooly_wolf/purple.json
+4d1876322e1b7c3ef76c472d7ee7ee4a844ec0ec data/wooly_paws/loot_table/shearing/wooly_wolf/red.json
+5780dc6e5c6b9f57ebf72e00ec3c2dcd1d71bf45 data/wooly_paws/loot_table/shearing/wooly_wolf/white.json
+908f324264c6145482f6929e90cf7859eb899386 data/wooly_paws/loot_table/shearing/wooly_wolf/yellow.json

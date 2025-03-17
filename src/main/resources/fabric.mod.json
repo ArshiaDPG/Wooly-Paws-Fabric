@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "wooly_paws",
+  "version": "${version}",
+
+  "name": "Wooly Paws",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "Apache-2.0",
+  "icon": "assets/wooly_paws/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": ["net.digitalpear.wooly_paws.WoolyPawsDataGenerator"],
+    "client": ["net.digitalpear.wooly_paws.client.WoolyPawsClient"],
+    "main": ["net.digitalpear.wooly_paws.WoolyPaws"]
+  },
+
+  "mixins": [
+    "wooly_paws.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": ">=1.21.4"
+  }
+}
