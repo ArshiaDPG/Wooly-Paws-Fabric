@@ -3,15 +3,10 @@ package net.digitalpear.wooly_paws.common.entity.models;
 
 import net.digitalpear.wooly_paws.common.entity.WoolyWolfEntityRenderState;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.entity.model.BabyModelTransformer;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.ModelTransformer;
 import net.minecraft.util.math.MathHelper;
 
-import java.util.Set;
-
 public class WoolyWolfWoolEntityModel extends EntityModel<WoolyWolfEntityRenderState> {
-    public static final ModelTransformer BABY_TRANSFORMER = new BabyModelTransformer(Set.of("head"));
     private final ModelPart head;
     private final ModelPart body;
     private final ModelPart rightHindLeg;
@@ -53,44 +48,50 @@ public class WoolyWolfWoolEntityModel extends EntityModel<WoolyWolfEntityRenderS
         super.setAngles(livingEntityRenderState);
         this.head.pitch = livingEntityRenderState.pitch * 0.017453292F;
         this.head.yaw = livingEntityRenderState.relativeHeadYaw * 0.017453292F;
-        float f = livingEntityRenderState.limbSwingAnimationProgress;
-        float g = livingEntityRenderState.limbSwingAmplitude;
-        this.rightHindLeg.pitch = MathHelper.cos(f * 0.6662F) * 1.4F * g;
-        this.leftHindLeg.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * g;
-        this.rightFrontLeg.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * g;
-        this.leftFrontLeg.pitch = MathHelper.cos(f * 0.6662F) * 1.4F * g;
+        float limbSwingAnimationProgress = livingEntityRenderState.limbSwingAnimationProgress;
+        float limbSwingAmplitude = livingEntityRenderState.limbSwingAmplitude;
+        this.rightHindLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F) * 1.4F * limbSwingAmplitude;
+        this.leftHindLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F + ((float) Math.PI)) * 1.4F * limbSwingAmplitude;
+        this.rightFrontLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F + ((float) Math.PI)) * 1.4F * limbSwingAmplitude;
+        this.leftFrontLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F) * 1.4F * limbSwingAmplitude;
         this.head.roll = livingEntityRenderState.begAnimationProgress + livingEntityRenderState.getRoll(0.0F);
         this.body.roll = livingEntityRenderState.getRoll(-0.16F);
         this.head.pitch = livingEntityRenderState.pitch * 0.017453292F;
         this.head.yaw = livingEntityRenderState.relativeHeadYaw * 0.017453292F;
 
+
         if (livingEntityRenderState.inSittingPose) {
-            float h = livingEntityRenderState.ageScale;
-            ModelPart var10000  = this.body;
-            var10000.originY += 4.0F * h;
-            var10000.originZ -= 2.0F * h;
+            float ageScale = livingEntityRenderState.ageScale;
+
+            ModelPart currentPart  = this.body;
+            currentPart.originY += 4.0F * ageScale;
+            currentPart.originZ -= 2.0F * ageScale;
             this.body.pitch = 0.7853982F;
-            var10000 = this.rightHindLeg;
-            var10000.originZ += 6.7F * h;
-            var10000.originZ -= 5.0F * h;
+
+            currentPart = this.rightHindLeg;
+            currentPart.originY += 6.7F * ageScale;
+            currentPart.originZ -= 5.0F * ageScale;
             this.rightHindLeg.pitch = 4.712389F;
-            var10000 = this.leftHindLeg;
-            var10000.originY += 6.7F * h;
-            var10000.originZ -= 5.0F * h;
+
+            currentPart = this.leftHindLeg;
+            currentPart.originY += 6.7F * ageScale;
+            currentPart.originZ -= 5.0F * ageScale;
             this.leftHindLeg.pitch = 4.712389F;
+
+            currentPart = this.rightFrontLeg;
+            currentPart.originX += 0.01F * ageScale;
+            currentPart.originY += ageScale;
             this.rightFrontLeg.pitch = 5.811947F;
-            var10000 = this.rightFrontLeg;
-            var10000.originX += 0.01F * h;
-            var10000.originY += h;
+
+            currentPart = this.leftFrontLeg;
+            currentPart.originX -= 0.01F * ageScale;
+            currentPart.originY += ageScale;
             this.leftFrontLeg.pitch = 5.811947F;
-            var10000 = this.leftFrontLeg;
-            var10000.originX -= 0.01F * h;
-            var10000.originY += h;
         } else {
-            this.rightHindLeg.pitch = MathHelper.cos(f * 0.6662F) * 1.4F * g;
-            this.leftHindLeg.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * g;
-            this.rightFrontLeg.pitch = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * g;
-            this.leftFrontLeg.pitch = MathHelper.cos(f * 0.6662F) * 1.4F * g;
+            this.rightHindLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F) * 1.4F * limbSwingAmplitude;
+            this.leftHindLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F + ((float) Math.PI)) * 1.4F * limbSwingAmplitude;
+            this.rightFrontLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F + ((float) Math.PI)) * 1.4F * limbSwingAmplitude;
+            this.leftFrontLeg.pitch = MathHelper.cos(limbSwingAnimationProgress * 0.6662F) * 1.4F * limbSwingAmplitude;
         }
     }
 }

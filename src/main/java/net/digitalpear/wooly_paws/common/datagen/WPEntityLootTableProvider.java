@@ -49,8 +49,8 @@ public class WPEntityLootTableProvider extends SimpleFabricLootTableProvider {
     public static LootPool.Builder createForWoolyWolves(Map<DyeColor, RegistryKey<LootTable>> colorLootTables) {
         AlternativeEntry.Builder builder = AlternativeEntry.builder();
 
-        Map.Entry entry;
-        for(Iterator<Map.Entry<DyeColor, RegistryKey<LootTable>>> var2 = colorLootTables.entrySet().iterator(); var2.hasNext(); builder = builder.alternatively(LootTableEntry.builder((RegistryKey)entry.getValue()).conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, EntityPredicate.Builder.create().components(net.minecraft.predicate.component.ComponentsPredicate.Builder.create().exact(ComponentMapPredicate.of(DataComponentTypes.SHEEP_COLOR, (DyeColor)entry.getKey())).build()).typeSpecific(WoolyWolfPredicate.unsheared()))))) {
+        Map.Entry<DyeColor, RegistryKey<LootTable>> entry;
+        for(Iterator<Map.Entry<DyeColor, RegistryKey<LootTable>>> var2 = colorLootTables.entrySet().iterator(); var2.hasNext(); builder = builder.alternatively(LootTableEntry.builder(entry.getValue()).conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, EntityPredicate.Builder.create().components(net.minecraft.predicate.component.ComponentsPredicate.Builder.create().exact(ComponentMapPredicate.of(DataComponentTypes.SHEEP_COLOR, entry.getKey())).build()).typeSpecific(WoolyWolfPredicate.unsheared()))))) {
             entry = var2.next();
         }
 

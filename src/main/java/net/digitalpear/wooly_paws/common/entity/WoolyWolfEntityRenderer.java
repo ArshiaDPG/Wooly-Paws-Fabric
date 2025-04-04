@@ -2,10 +2,7 @@ package net.digitalpear.wooly_paws.common.entity;
 
 
 import net.digitalpear.wooly_paws.WoolyPaws;
-import net.digitalpear.wooly_paws.common.entity.features.WoolyWolfArmorFeature;
-import net.digitalpear.wooly_paws.common.entity.features.WoolyWolfCollarFeature;
-import net.digitalpear.wooly_paws.common.entity.features.WoolyWolfEntityShearedLayerFeature;
-import net.digitalpear.wooly_paws.common.entity.features.WoolyWolfWoolFeature;
+import net.digitalpear.wooly_paws.common.entity.features.*;
 import net.digitalpear.wooly_paws.common.entity.models.WoolyWolfEntityModel;
 import net.minecraft.client.render.entity.AgeableMobEntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -19,8 +16,10 @@ public class WoolyWolfEntityRenderer extends AgeableMobEntityRenderer<WoolyWolfE
         super(context, new WoolyWolfEntityModel(context.getPart(EntityModelLayers.WOLF)), new WoolyWolfEntityModel(context.getPart(EntityModelLayers.WOLF_BABY)), 0.5F);
         this.addFeature(new WoolyWolfWoolFeature(this, context.getEntityModels()));
         this.addFeature(new WoolyWolfEntityShearedLayerFeature(this, context.getEntityModels()));
+        this.addFeature(new WoolyWolfUndercoatFeature(this, context.getEntityModels()));
         this.addFeature(new WoolyWolfCollarFeature(this));
         this.addFeature(new WoolyWolfArmorFeature(this, context.getEntityModels(), context.getEquipmentRenderer()));
+        this.addFeature(new WoolyWolfWoolCollarFeature(this,context.getEntityModels()));
     }
 
     @Override

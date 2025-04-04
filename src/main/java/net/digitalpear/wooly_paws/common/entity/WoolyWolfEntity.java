@@ -4,6 +4,7 @@ package net.digitalpear.wooly_paws.common.entity;
 import net.digitalpear.wooly_paws.init.WPDataComponentTypes;
 import net.digitalpear.wooly_paws.init.WPEntityType;
 import net.digitalpear.wooly_paws.init.WPLootTables;
+import net.digitalpear.wooly_paws.init.WPTags;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.ComponentsAccess;
 import net.minecraft.component.DataComponentTypes;
@@ -14,11 +15,14 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.passive.WolfVariants;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -30,6 +34,8 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class WoolyWolfEntity extends WolfEntity implements Shearable {
     private static final TrackedData<Byte> COLOR = DataTracker.registerData(WoolyWolfEntity.class, TrackedDataHandlerRegistry.BYTE);
@@ -83,6 +89,7 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
         nbt.putBoolean("Sheared", this.isSheared());
         nbt.put("Color", DyeColor.INDEX_CODEC, this.getColor());
         nbt.putInt("Digestion", this.getDigestion());
+
     }
     @SuppressWarnings("deprecation")
     public void readCustomDataFromNbt(NbtCompound nbt) {
@@ -115,8 +122,12 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
+        EntityData data = super.initialize(world, difficulty, spawnReason, entityData);
         this.setDigestion(0);
-        return super.initialize(world, difficulty, spawnReason, entityData);
+        if (Objects.requireNonNull(this.get(DataComponentTypes.WOLF_VARIANT)).isIn(WPTags.WolfVariants.WOOLY_WOLF_VARIANT_BLACKLIST)){
+            this.setComponent(DataComponentTypes.WOLF_VARIANT, this.getRegistryManager().getOrThrow(RegistryKeys.WOLF_VARIANT).getOrThrow(WolfVariants.DEFAULT));
+        }
+        return data;
     }
 
     @Nullable
@@ -162,15 +173,6 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
             }
             return ActionResult.CONSUME;
         }
-//        else if (this.canEquip(handStack, EquipmentSlot.BODY) && !this.isSheared()) {
-//            return ActionResult.PASS;
-//        }
-//        else if (handStack.isOf(Items.POISONOUS_POTATO)) {
-//            player.swingHand(hand);
-//            handStack.decrementUnlessCreative(1, player);
-//            this.setDigestion(this.getDigestion() - maxDigestion());
-//            this.getWorld().playSoundFromEntity(player, this, getAmbientSound(), SoundCategory.NEUTRAL, 1.0F, 1.0F);
-//        }
         else if (this.isShearable() && handStack.getItem() instanceof DyeItem dyeItem){
             player.swingHand(hand);
             handStack.decrementUnlessCreative(1, player);
@@ -202,23 +204,17 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
     @Nullable
     @Override
     public WolfEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
+        WolfEntity wolfEntity = super.createChild(serverWorld, passiveEntity);
         WoolyWolfEntity woolyWolfEntity = WPEntityType.WOOLY_WOLF.create(serverWorld, SpawnReason.BREEDING);
-        if (woolyWolfEntity != null) {
+        if (woolyWolfEntity != null && wolfEntity != null) {
+            woolyWolfEntity.copyComponentsFrom(wolfEntity);
             DyeColor dyeColor = this.getColor();
             DyeColor dyeColor2 = ((WoolyWolfEntity)passiveEntity).getColor();
             woolyWolfEntity.setColor(DyeColor.mixColors(serverWorld, dyeColor, dyeColor2));
-            if (this.random.nextBoolean()) {
-                woolyWolfEntity.setComponent(DataComponentTypes.WOLF_VARIANT, this.get(DataComponentTypes.WOLF_VARIANT));
-            } else {
-                woolyWolfEntity.setApplicableComponent(DataComponentTypes.WOLF_VARIANT, passiveEntity.get(DataComponentTypes.WOLF_VARIANT));
-            }
-            if (this.isTamed()) {
-                woolyWolfEntity.setOwner(this.getOwner());
-                woolyWolfEntity.setTamed(true, true);
-                woolyWolfEntity.setComponent(DataComponentTypes.WOLF_COLLAR, DyeColor.mixColors(serverWorld, passiveEntity.get(DataComponentTypes.WOLF_COLLAR), this.get(DataComponentTypes.WOLF_COLLAR)));
 
+            if (Objects.requireNonNull(woolyWolfEntity.get(DataComponentTypes.WOLF_VARIANT)).isIn(WPTags.WolfVariants.WOOLY_WOLF_VARIANT_BLACKLIST)){
+                woolyWolfEntity.setComponent(DataComponentTypes.WOLF_VARIANT, this.getRegistryManager().getOrThrow(RegistryKeys.WOLF_VARIANT).getOrThrow(WolfVariants.DEFAULT));
             }
-
         }
         return woolyWolfEntity;
     }

@@ -1,6 +1,7 @@
 package net.digitalpear.wooly_paws.init;
 
 import net.digitalpear.wooly_paws.WoolyPaws;
+import net.minecraft.entity.passive.WolfVariant;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -18,6 +19,13 @@ public class WPTags {
             return WPTags.of(id, RegistryKeys.BIOME);
         }
 
-        public static TagKey<Biome> SPAWNS_WOOLY_WOLF = of("spawns_wooly_wolf");
+        public static final TagKey<Biome> SPAWNS_WOOLY_WOLF = of("spawns_wooly_wolf");
+    }
+    public static class WolfVariants {
+        private static TagKey<WolfVariant> of(String id){
+            return WPTags.of(id, RegistryKeys.WOLF_VARIANT);
+        }
+
+        public static final TagKey<WolfVariant> WOOLY_WOLF_VARIANT_BLACKLIST = of("wooly_wolf_variant_blacklist");
     }
 }

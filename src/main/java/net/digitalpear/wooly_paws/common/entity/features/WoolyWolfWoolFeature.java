@@ -28,18 +28,18 @@ public class WoolyWolfWoolFeature extends FeatureRenderer<WoolyWolfEntityRenderS
     }
 
     @Override
-    public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, WoolyWolfEntityRenderState sheepEntityRenderState, float f, float g) {
-        if (!sheepEntityRenderState.sheared) {
-            EntityModel<WoolyWolfEntityRenderState> entityModel = sheepEntityRenderState.baby ? this.babyWoolModel : this.woolModel;
-            if (sheepEntityRenderState.invisible) {
-                if (sheepEntityRenderState.hasOutline) {
-                    entityModel.setAngles(sheepEntityRenderState);
+    public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, WoolyWolfEntityRenderState woolyWolfEntityRenderState, float f, float g) {
+        if (!woolyWolfEntityRenderState.sheared) {
+            EntityModel<WoolyWolfEntityRenderState> entityModel = woolyWolfEntityRenderState.baby ? this.babyWoolModel : this.woolModel;
+            if (woolyWolfEntityRenderState.invisible) {
+                if (woolyWolfEntityRenderState.hasOutline) {
+                    entityModel.setAngles(woolyWolfEntityRenderState);
                     VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getOutline(TEXTURE));
-                    entityModel.render(matrixStack, vertexConsumer, i, LivingEntityRenderer.getOverlay(sheepEntityRenderState, 0.0F), -16777216);
+                    entityModel.render(matrixStack, vertexConsumer, i, LivingEntityRenderer.getOverlay(woolyWolfEntityRenderState, 0.0F), -16777216);
                 }
 
             } else {
-                render(entityModel, TEXTURE, matrixStack, vertexConsumerProvider, i, sheepEntityRenderState, sheepEntityRenderState.getRgbColor());
+                render(entityModel, TEXTURE, matrixStack, vertexConsumerProvider, i, woolyWolfEntityRenderState, woolyWolfEntityRenderState.getRgbColor());
             }
         }
     }

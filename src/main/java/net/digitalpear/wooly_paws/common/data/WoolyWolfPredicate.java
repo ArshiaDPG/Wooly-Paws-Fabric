@@ -7,8 +7,6 @@ import net.digitalpear.wooly_paws.common.entity.WoolyWolfEntity;
 import net.digitalpear.wooly_paws.init.WPEntitySubPredicateTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.predicate.entity.EntitySubPredicate;
-import net.minecraft.predicate.entity.EntitySubPredicateTypes;
-import net.minecraft.predicate.entity.SheepPredicate;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;

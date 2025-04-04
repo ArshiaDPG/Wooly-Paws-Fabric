@@ -5,7 +5,9 @@
 
   "name": "Wooly Paws",
   "description": "",
-  "authors": [],
+  "authors": [
+    "DigitalPear"
+  ],
   "contact": {},
 
   "license": "Apache-2.0",
