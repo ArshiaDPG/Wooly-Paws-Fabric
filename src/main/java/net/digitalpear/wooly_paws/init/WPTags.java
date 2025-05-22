@@ -1,6 +1,7 @@
 package net.digitalpear.wooly_paws.init;
 
 import net.digitalpear.wooly_paws.WoolyPaws;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.WolfVariant;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -27,5 +28,13 @@ public class WPTags {
         }
 
         public static final TagKey<WolfVariant> WOOLY_WOLF_VARIANT_BLACKLIST = of("wooly_wolf_variant_blacklist");
+    }
+
+    public static class EntityTypes{
+        private static TagKey<EntityType<?>> of(String id){
+            return WPTags.of(id, RegistryKeys.ENTITY_TYPE);
+        }
+        public static final TagKey<EntityType<?>> WOOLY_WOLF_CAN_STEAL_WOOL = of("wooly_wolf_can_steal_wool");
+
     }
 }

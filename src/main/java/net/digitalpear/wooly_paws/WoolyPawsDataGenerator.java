@@ -13,7 +13,9 @@ public class WoolyPawsDataGenerator implements DataGeneratorEntrypoint {
 
         pack.addProvider(WPLanguageProvider::new);
         pack.addProvider(WPModelProvider::new);
+
         pack.addProvider(WPBiomeTagProvider::new);
         pack.addProvider(WPWolfVariantTagProvider::new);
+        pack.addProvider(WPEntityTypeTagProvider::new);
     }
 }

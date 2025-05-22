@@ -21,7 +21,6 @@ import net.minecraft.item.DyeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -89,7 +88,6 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
         nbt.putBoolean("Sheared", this.isSheared());
         nbt.put("Color", DyeColor.INDEX_CODEC, this.getColor());
         nbt.putInt("Digestion", this.getDigestion());
-
     }
     @SuppressWarnings("deprecation")
     public void readCustomDataFromNbt(NbtCompound nbt) {
@@ -185,10 +183,13 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
 
     @Override
     public boolean onKilledOther(ServerWorld world, LivingEntity other) {
-        if (other instanceof SheepEntity sheepEntity){
+        if (other.getType().isIn(WPTags.EntityTypes.WOOLY_WOLF_CAN_STEAL_WOOL)){
             if (this.isSheared()){
                 this.setSheared(false);
-                this.setColor(sheepEntity.getColor());
+                if (other.get(DataComponentTypes.SHEEP_COLOR) != null){
+                    this.setColor(other.get(DataComponentTypes.SHEEP_COLOR));
+                }
+
             }
         }
         else{
@@ -208,7 +209,7 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
         WoolyWolfEntity woolyWolfEntity = WPEntityType.WOOLY_WOLF.create(serverWorld, SpawnReason.BREEDING);
         if (woolyWolfEntity != null && wolfEntity != null) {
             if (this.isTamed()){
-                this.setOwner(this.getOwner());
+                woolyWolfEntity.setOwner(this.getOwner());
                 woolyWolfEntity.setTamed(true, true);
             }
             woolyWolfEntity.copyComponentsFrom(wolfEntity);
