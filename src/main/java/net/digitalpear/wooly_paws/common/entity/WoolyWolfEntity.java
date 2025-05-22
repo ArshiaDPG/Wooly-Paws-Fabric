@@ -207,6 +207,10 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
         WolfEntity wolfEntity = super.createChild(serverWorld, passiveEntity);
         WoolyWolfEntity woolyWolfEntity = WPEntityType.WOOLY_WOLF.create(serverWorld, SpawnReason.BREEDING);
         if (woolyWolfEntity != null && wolfEntity != null) {
+            if (this.isTamed()){
+                this.setOwner(this.getOwner());
+                woolyWolfEntity.setTamed(true, true);
+            }
             woolyWolfEntity.copyComponentsFrom(wolfEntity);
             DyeColor dyeColor = this.getColor();
             DyeColor dyeColor2 = ((WoolyWolfEntity)passiveEntity).getColor();

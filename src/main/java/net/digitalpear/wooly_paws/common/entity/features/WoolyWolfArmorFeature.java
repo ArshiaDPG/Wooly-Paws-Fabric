@@ -50,7 +50,7 @@ public class WoolyWolfArmorFeature extends FeatureRenderer<WoolyWolfEntityRender
     private void renderCracks(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemStack stack, Model model) {
         Cracks.CrackLevel crackLevel = Cracks.WOLF_ARMOR.getCrackLevel(stack);
         if (crackLevel != Cracks.CrackLevel.NONE) {
-            Identifier identifier = (Identifier)CRACK_TEXTURES.get(crackLevel);
+            Identifier identifier = CRACK_TEXTURES.get(crackLevel);
             VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.createArmorTranslucent(identifier));
             model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
         }
