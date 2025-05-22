@@ -17,10 +17,10 @@ public class WPBiomeTagProvider extends FabricTagProvider<Biome> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(WPTags.Biomes.SPAWNS_WOOLY_WOLF)
-                .add(BiomeKeys.FOREST)
-                .add(BiomeKeys.BIRCH_FOREST)
-                .add(BiomeKeys.TAIGA)
-                .add(BiomeKeys.SAVANNA);
+        getTagBuilder(WPTags.Biomes.SPAWNS_WOOLY_WOLF)
+                .add(BiomeKeys.FOREST.getValue())
+                .add(BiomeKeys.BIRCH_FOREST.getValue())
+                .add(BiomeKeys.TAIGA.getValue())
+                .add(BiomeKeys.SAVANNA.getValue());
     }
 }

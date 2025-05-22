@@ -25,6 +25,8 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
@@ -79,22 +81,23 @@ public class WoolyWolfEntity extends WolfEntity implements Shearable {
         this.setSheared(true);
     }
 
+
     public boolean isShearable() {
         return this.isAlive() && !this.isSheared() && !this.isBaby();
     }
     @SuppressWarnings("deprecation")
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
+    public void writeCustomData(WriteView nbt) {
+        super.writeCustomData(nbt);
         nbt.putBoolean("Sheared", this.isSheared());
         nbt.put("Color", DyeColor.INDEX_CODEC, this.getColor());
         nbt.putInt("Digestion", this.getDigestion());
     }
     @SuppressWarnings("deprecation")
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
-        this.setSheared(nbt.getBoolean("Sheared").orElse(false));
-        this.setDigestion(nbt.getInt("Digestion").orElse(0));
-        this.setColor(nbt.get("Color", DyeColor.INDEX_CODEC).orElse(DEFAULT_COLOR));
+    public void readCustomData(ReadView nbt) {
+        super.readCustomData(nbt);
+        this.setSheared(nbt.getBoolean("Sheared", false));
+        this.setDigestion(nbt.getInt("Digestion", 0));
+        this.setColor(nbt.read("Color", DyeColor.INDEX_CODEC).orElse(DEFAULT_COLOR));
     }
 
     @Override

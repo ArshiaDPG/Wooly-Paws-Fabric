@@ -1,6 +1,7 @@
 package net.digitalpear.wooly_paws.common.entity;
 
 import net.minecraft.client.render.entity.state.WolfEntityRenderState;
+import net.minecraft.client.util.ColorLerper;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.ColorHelper;
@@ -12,19 +13,7 @@ public class WoolyWolfEntityRenderState extends WolfEntityRenderState {
     public int id;
 
     public int getRgbColor() {
-        if (this.isJeb()) {
-            int j = MathHelper.floor(this.age);
-            int k = j / 25 + this.id;
-            int l = DyeColor.values().length;
-            int m = k % l;
-            int n = (k + 1) % l;
-            float f = ((float)(j % 25) + MathHelper.fractionalPart(this.age)) / 25.0F;
-            int o = SheepEntity.getRgbColor(DyeColor.byIndex(m));
-            int p = SheepEntity.getRgbColor(DyeColor.byIndex(n));
-            return ColorHelper.lerp(f, o, p);
-        } else {
-            return SheepEntity.getRgbColor(this.color);
-        }
+        return this.isJeb() ? ColorLerper.lerpColor(ColorLerper.Type.SHEEP, this.age) : ColorLerper.Type.SHEEP.getArgb(this.color);
     }
     public WoolyWolfEntityRenderState(){
         this.color = DyeColor.WHITE;

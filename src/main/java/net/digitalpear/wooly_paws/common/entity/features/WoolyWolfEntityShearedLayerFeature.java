@@ -32,6 +32,7 @@ public class WoolyWolfEntityShearedLayerFeature extends FeatureRenderer<WoolyWol
             return;
         }
         WolfEntityModel entityModel = state.baby ? this.babyModel : this.model;
-        render(entityModel, SKIN, matrices, vertexConsumers, light, state, SheepEntity.getRgbColor(DyeColor.WHITE));
+        render(entityModel, SKIN, matrices, vertexConsumers, light, state, state.getRgbColor());
     }
+
 }

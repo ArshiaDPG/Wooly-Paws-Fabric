@@ -16,6 +16,6 @@ public class WPWolfVariantTagProvider extends FabricTagProvider<WolfVariant> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(WPTags.WolfVariants.WOOLY_WOLF_VARIANT_BLACKLIST);
+        getTagBuilder(WPTags.WolfVariants.WOOLY_WOLF_VARIANT_BLACKLIST);
     }
 }
